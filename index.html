@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Votação de Assembleia</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/general.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Votação de Assembleia</h1>
+        <h2>Seja bem vindo. Escolha abaixo a opção apropriada.</h2>
+        <h5>Conectado ao Smart Contract? <span id="conectado">Não</span></h5>
+        <hr>
+        <p>📌 <a href="presidente.html">Presidente</a></p> 
+        <p>📌 <a href="secretario.html">Secretario</a></p>
+        <p>📌 <a href="votacao.html">Votação</a></p>
+        <p>📌 <a href="resultado.html">Resultado da votação</a></p>
+    
+        <br>
+        <hr>
+        <div>
+            Votação registrada sob o contrato: <a id="linkContrato" href="" target="_blank"></a>
+        </div>
+        <br>
+        <footer>
+            <hr>
+            <div>
+                Conexão a rede do Ethereum fornecido por:
+                &nbsp;&nbsp;
+                <span id="spanImgMetamask"><img id="imgMetamask" src="image/download-metamask-dark.png" alt="Baixe já o metamask"></span>
+            </div>
+        </footer>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="js/web3.min.js"></script>
+    <script src="js/abi.js"></script>
+</body>
+</html>
