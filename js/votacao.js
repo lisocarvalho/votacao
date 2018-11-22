@@ -1,38 +1,5 @@
 var totalDePropostas = 0;
 
-function obterTotalDePropostas() {
-    if (verificaCondicoesInteragirSmartContract()) {
-        contract.methods.totalDePropostas().call(trxObj, function (err, result) {
-            if (err)    {
-                console.error("totalDePropostas - Erro: " + err);
-            } else {
-                totalDePropostas = (result*1);
-                pesquisarPropostas(totalDePropostas);
-            }
-        });
-    } else {
-        console.log("nao foi");
-    }
-}
-
-function pesquisarPropostas(nroTotalDePropostas) {
-    if (verificaCondicoesInteragirSmartContract()) {
-        for (i=0; i<nroTotalDePropostas; i++) {
-            contract.methods.pesquisarProposta(i).call(trxObj, function (err, proposta) {
-                if (err)    {
-                    console.error("pesquisarPropostas - Erro: " + err);
-                } else {
-                    console.log("pesquisarPropostas: " + window.location.pathname);
-                    if (window.location.pathname.includes("votacao.html")) {
-                        setupPaginaVotos(proposta);
-                    } else if (window.location.pathname.includes("resultado.html")) {
-                        setupResultadoVotos(proposta);
-                    }
-                }
-            });
-        }
-    }
-}
 
 function setupPaginaVotos(proposta) {
     console.log("setupPaginaVotos");
