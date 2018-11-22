@@ -12,26 +12,10 @@
 </head>
 <body>
     <div class="container">
-        <h1>Votação de Assembleia</h1>
-        <h2>Página para serviço do Presidente da Assembleia</h2>
+        <h1>Votação</h1>
+        <h3>Registros de Votação</h3>
         <h5>Conectado ao Smart Contract? <span id="conectado">Não</span></h5>
         <br>
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                Define o secretário da Assembléia
-            </div>
-            <div class="panel-body">
-                <form action="#" id="frmSecretario" name="frmSecretario" class="form-inline">
-                    <div class="form-group">
-                        <label for="secretario">Endereço Ethereum do Secretário: &nbsp;</label>
-                        <input type="text" name="secretario" id="secretario" size="48">
-                    </div>
-                    &nbsp;
-                    <button type="submit" id="btnSecretario" class="btn btn-default" onclick="registraSecretario(); return false;">Registrar</button>
-                </form>
-            </div>
-            <div class="boxStatusTransacoes panel-footer" id="statusSecretario"> </div>
-        </div>
         <hr>
         <div class="panel panel-default">
             <div class="panel-heading">
@@ -79,14 +63,7 @@
             Votação registrada sob o contrato: <a id="linkContrato" href="" target="_blank"></a>
         </div>
         <br>
-        <footer>
-            <hr>
-            <div>
-                Conexão a rede do Ethereum fornecido por:
-                &nbsp;&nbsp;
-                <span id="spanImgMetamask"><img id="imgMetamask" src="image/download-metamask-dark.png" alt="Baixe já o metamask"></span>
-            </div>
-        </footer>
+        
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
