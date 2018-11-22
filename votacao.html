@@ -10,7 +10,7 @@
 </head>
 <body>
     <div class="container">
-        <h1>Votação de Assembleia</h1>
+        <h1>Votação</h1>
         <h2>Página de votação</h2>
         <h5>Conectado ao Smart Contract? <span id="conectado">Não</span></h5>
         <hr>
@@ -21,12 +21,9 @@
                 <div class="panel-heading">
                 </div>
                 <div class="panel-body">
-                    <div>
-                        Proponente: <span></span>
-                    </div>
                     <br>
                     <div>
-                        Você concorda? 
+                        Escolha abaixo para votar "sim" ou "não" 
                         &nbsp;
                         <select id="voto" onchange="registrarVoto(event)">
                             <option value="" selected></option>
@@ -44,14 +41,7 @@
             Votação registrada sob o contrato: <a id="linkContrato" href="" target="_blank"></a>
         </div>
         <br>
-        <footer>
-            <hr>
-            <div>
-                Conexão a rede do Ethereum fornecido por:
-                &nbsp;&nbsp;
-                <span id="spanImgMetamask"><img id="imgMetamask" src="image/download-metamask-dark.png" alt="Baixe já o metamask"></span>
-            </div>
-        </footer>
+       
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
