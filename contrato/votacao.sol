@@ -1,7 +1,7 @@
 pragma  solidity 0.4.25;
 
 
-contract VotacaoAssembleia {
+contract Votacao {
 
     struct Proposta {
         string texto;
