@@ -1,19 +1,18 @@
 pragma solidity 0.4.25;
 
 
-contract Vote {
+contract VotacaoContratacao {
  
     struct Votante {
-        uint quantidade; 
-        bool votado;  
-        address permite; 
-        uint voto;  
+        bool votou;  
+        address idVotante; 
+        bool existe;
     }
 
     
     struct Proposta
     {
-        bytes32 nome;   
+        string nome;   
         uint numVotos; 
     }
 
@@ -21,86 +20,43 @@ contract Vote {
 
     mapping(address => Votante) public votantes;
 
-    Proposta [] public propostas;
+    Proposta public propostaDestaVotacao;
+    uint public totalVotantes;
 
+    constructor () public {
+        propostaDestaVotacao = Proposta ("Contratação de Crédito", 0);
+        presidente=msg.sender;
+    }
     
-    function Vote (bytes32[] nomeProposta) {
-        presidente = msg.sender;
-        votantes[presidente].quantidade = 1;
-
-        for (uint i = 0; i < nomeProposta.length; i++) {
-            
-            propostas.push(Proposta({
-                nome: nomeProposta[i],
-                numVotos: 0
-            }));
-        }
+    
+    function direitoDeVoto (address enderecoVotante) public {
+        require (msg.sender == presidente);        
+        Votante memory votante = Votante(false, enderecoVotante, true);
+        votantes[enderecoVotante] = votante;
+        totalVotantes = totalVotantes+1;
     }
 
-    function direitoDeVoto (address votante) {
-        if (msg.sender != presidente || votantes[votante].votado) {
-            
-            require;
+
+    function votar(uint intencaoDoVoto) public {
+        Votante memory quemEstaVotando = votantes[msg.sender];
+        require(quemEstaVotando.existe);
+        require(quemEstaVotando.votou==false);
+        if (intencaoDoVoto>0) {
+            propostaDestaVotacao.numVotos = propostaDestaVotacao.numVotos+1;
         }
-        votantes[votante].quantidade = 1;
+        quemEstaVotando.votou = true;
     }
 
-    
-    function permite(address to) {
-        
-        Votante sender = votantes[msg.sender];
-        if (sender.votado)
-            require;
-
-        while (
-            votantes[to].permite != address(0) &&
-            votantes[to].permite != msg.sender
-        ) {
-            to = votantes[to].permite;
-        }
-
-       if (to == msg.sender) {
-            require;
-        }
-
-        
-        sender.votado = true;
-        sender.permite = to;
-        votante permite = votantes[to];
-        if (permite.votado) {
-            propostas[permite.voto].numVotos += sender.quantidade;
+    function resultado() public view returns (bool)
+    {
+        uint quantidadeMinimaDeVotos = (totalVotantes/2);
+        if (propostaDestaVotacao.numVotos>quantidadeMinimaDeVotos) 
+        {
+            return true;
         } else {
-           permite.quantidade += sender.quantidade;
+            return false;
         }
     }
 
     
-    function voto(uint proposta) {
-        Votante sender = votantes[msg.sender];
-        if (sender.votado)
-            require;
-        sender.votado = true;
-        sender.voto = proposta;
-
-   
-        propostas[proposta].numVotos += sender.quantidade;
-    }
-
-   function resultado() constant
-            returns (uint resultado)
-    {
-        uint propostaGanha = 0;
-        for (uint p = 0; p < propostas.length; p++) {
-            if (propostas[p].numVotos > propostaGanha) {
-                propostaGanha = propostas[p].numVotos;
-                resultado = p;
-            }
-        }
-    }
-
-    function propostaVenc() constant
-            returns (bytes32 propostaVenc)
-    {
-        propostaVenc = propostas[resultado()].nome;
-    }
 }
